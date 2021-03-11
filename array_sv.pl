@@ -119,12 +119,12 @@ for($y=$YBITS-$y_pp_size; $y < $YBITS ; $y++) {
     for($x=$XBITS-1; $x >= $XBITS-$x_pp_size; $x--) {
         if($x+$y>=$XBITS+$YBITS-$ZBITS){
 	    if($y>$YBITS-$y_pp_size && $x==$XBITS-1) {
-	        printf ("\tand pp%s(sum%s[%s], X[%s], Y[%s]);\n",
+	        printf ("\tpartialProduct pp%s(sum%s[%s], X[%s], Y[%s]);\n",
 			$pp_label, $y, $x, $x, $y);
 	        $pp_label++;
 	    }
 	    else {
-	        printf ("\tand pp%s(P%s[%s], X[%s], Y[%s]);\n",
+	        printf ("\tpartialProduct pp%s(P%s[%s], X[%s], Y[%s]);\n",
 			$pp_label, $y, $x, $x, $y);
 	        $pp_label++;
 	    }
