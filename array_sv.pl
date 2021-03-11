@@ -185,7 +185,7 @@ $xstart=0;
 for($x=$xstart; $x < $XBITS ; $x++) {
     if($x==$xstart) {
 	if($x==$XBITS-$nhop){
-	    printf("\thalf_adder CPA%s(carry%s[%s],Z[%s],carry%s[%s],sum%s[%s]);\n",$cpa_label,$YBITS,$x,$Zpin,$YBITS-1,$x,$YBITS-1,$x+1);
+	    printf("\thalfAdder CPA%s(carry%s[%s],Z[%s],carry%s[%s],sum%s[%s]);\n",$cpa_label,$YBITS,$x,$Zpin,$YBITS-1,$x,$YBITS-1,$x+1);
 	    $cpa_label++;
 	    $Zpin++;
 	}
@@ -195,18 +195,18 @@ for($x=$xstart; $x < $XBITS ; $x++) {
     }
     else{
 	if($x==$XBITS-2) {
-	    printf("\tfull_adder CPA%s(Z[%s],Z[%s],carry%s[%s],carry%s[%s],sum%s[%s]);\n",$cpa_label,$Zpin+1,$Zpin,$YBITS-1,$x,$YBITS,$x-1,$YBITS-1,$x+1);
+	    printf("\tfullAdder CPA%s(Z[%s],Z[%s],carry%s[%s],carry%s[%s],sum%s[%s]);\n",$cpa_label,$Zpin+1,$Zpin,$YBITS-1,$x,$YBITS,$x-1,$YBITS-1,$x+1);
 	    $cpa_label++;
 	    $Zpin++;
 	}
 	else{
 	    if($x>=$XBITS-$nhop && $x<$XBITS-2) {
-		printf("\tfull_adder CPA%s(carry%s[%s],Z[%s],carry%s[%s],carry%s[%s],sum%s[%s]);\n",$cpa_label,$YBITS,$x,$Zpin,$YBITS-1,$x,$YBITS,$x-1,$YBITS-1,$x+1);
+		printf("\tfullAdder CPA%s(carry%s[%s],Z[%s],carry%s[%s],carry%s[%s],sum%s[%s]);\n",$cpa_label,$YBITS,$x,$Zpin,$YBITS-1,$x,$YBITS,$x-1,$YBITS-1,$x+1);
 		$cpa_label++;
 		$Zpin++;
 	    }
 	    if($x<$XBITS-$nhop && $x>$xstart && $x<$XBITS-2){
-		printf("\treduced_full_adder CPA%s(carry%s[%s],carry%s[%s],carry%s[%s],sum%s[%s]);\n",$cpa_label,$YBITS,$x,$YBITS-1,$x,$YBITS,$x-1,$YBITS-1,$x+1);
+		printf("\treducedFullAdder CPA%s(carry%s[%s],carry%s[%s],carry%s[%s],sum%s[%s]);\n",$cpa_label,$YBITS,$x,$YBITS-1,$x,$YBITS,$x-1,$YBITS-1,$x+1);
 		$cpa_label++;
 	    }
 	}
