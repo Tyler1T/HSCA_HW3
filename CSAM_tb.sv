@@ -3,10 +3,11 @@ module stimulus();
   logic [4:0] Y;
   logic [7:0] X;
   logic [11:0] Z;
+  logic [11:0] answer;
   logic clk;
 
   // Instantiate DUT
-  CSAM dut(A, B, A_eq_B, A_lt_B, A_gt_B);
+  CSAM dut(Z, X, Y);
 
   always
     begin
@@ -23,12 +24,12 @@ module stimulus();
   always @(posedge clk)
     begin
       #1;
-      {A, B, AGTBE, AEQBE, ALTBE} = testVector[vectornum];
+      {X, Y, answer} = testVector[vectornum];
     end
 
   always @(negedge clk)
     begin
-    if(A_eq_B !== AEQBE) begin
+    if(Z !== answer) begin
       $display("Error: inputs for EQ test A = %b B = %b", A, B);
       $display("  outputs = %b (%b expected)", A_eq_B, AEQBE);
       $display("");
