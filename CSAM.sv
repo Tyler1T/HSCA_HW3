@@ -1,4 +1,4 @@
-module CSAM (Z, X, Y);
+module CSAM(Z, X, Y);
 
         input logic [3:0] Y;
         input logic [7:0] X;

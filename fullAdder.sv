@@ -1,6 +1,6 @@
-module fullAdder(input logic A, B, Cin output logic S, Cout);
+module fullAdder(output logic Cout, S, input logic A, B , Cin);
   wire toOr1, toOr2, aNext;
-  halfAdder first(A, B, aNext, toOr1);
-  halfAdder second(aNext, Cin, S, toOr2);
+  halfAdder first(toOr1, aNext, A, B);
+  halfAdder second(toOr2, S, aNext, Cin);
   assign Cout = toOr1 | toOr2
 endmodule

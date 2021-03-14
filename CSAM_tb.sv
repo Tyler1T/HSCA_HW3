@@ -12,8 +12,8 @@ module stimulus();
   //for five vector numbers we need 3 bits
   logic [2:0] vectornum, errors;
 
-  //the testvector file should be 27 bits wide
-  logic [26:0] testVector[5:0];
+  //the testvector file should be 5 rows each 27 bits wide
+  logic [26:0] testVector[4:0];
 
 
   // Instantiate DUT
@@ -47,7 +47,7 @@ module stimulus();
     end
 
     vectornum = vectornum + 1;
-    if(vectornum === 16) begin
+    if(vectornum === 5) begin
       $display("%d tests completed with %d errors", vectornum, errors);
     end
   end
