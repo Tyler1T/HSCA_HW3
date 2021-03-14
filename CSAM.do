@@ -48,4 +48,4 @@ TreeUpdate [SetDefaultTree]
 WaveRestoreZoom {0 ps} {75 ns}
 
 -- Run the Simulation
-run 80ns
+run 100ns

@@ -23,11 +23,11 @@ if __name__ == '__main__':
         print("What is the second number to multiply by?")
         y = int(input())
         z = x*y
+        f.write(decimalToBinary15(z))
+        f.write("_")
         f.write(decimalToBinary8(x))
         f.write("_")
         f.write(decimalToBinary4(y))
-        f.write("_")
-        f.write(decimalToBinary15(z))
         f.write("\n")
         print()
     f.close()

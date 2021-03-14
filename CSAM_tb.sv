@@ -2,11 +2,9 @@ module stimulus();
 
   logic [3:0] Y;
   logic [7:0] X;
-  logic [11:0] Z;
+  logic [14:0] Z;
 
-  logic [3:0] num2;
-  logic [7:0] num1;
-  logic [11:0] answer;
+  logic [14:0] answer;
   logic clk;
 
   //for five vector numbers we need 3 bits
@@ -17,7 +15,7 @@ module stimulus();
 
 
   // Instantiate DUT
-  CSAM dut(Z, X, Y);
+  CSAM dut(answer, X, Y);
 
   always
     begin
@@ -34,12 +32,12 @@ module stimulus();
   always @(posedge clk)
     begin
       #1;
-      {answer, num1, num2} = testVector[vectornum];
+      {Z, X, Y} = testVector[vectornum];
     end
 
   always @(negedge clk)
     begin
-    if(Z !== answer) begin
+    if(answer !== Z) begin
       $display("Error: inputs for test X = %b Y = %b", X, Y);
       $display("  outputs = %b (%b expected)", Z, answer);
       $display("");
