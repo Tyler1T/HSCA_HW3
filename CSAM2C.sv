@@ -19,6 +19,8 @@ module CSAM2C(Z, X, Y);
         logic [7:0] sum4;
         logic [10:0] carry5;
 
+        wire cout;
+
 
         // generate the partial products.
         partialNProduct pp1(P0[7], X[7], Y[0]);
@@ -29,7 +31,7 @@ module CSAM2C(Z, X, Y);
         partialProduct pp6(P0[2], X[2], Y[0]);
         partialProduct pp7(P0[1], X[1], Y[0]);
         partialProduct pp8(P0[0], X[0], Y[0]);
-        partialProduct pp9(sum1[7], X[7], Y[1]);
+        partialNProduct pp9(sum1[7], X[7], Y[1]);
         partialProduct pp10(P1[6], X[6], Y[1]);
         partialProduct pp11(P1[5], X[5], Y[1]);
         partialProduct pp12(P1[4], X[4], Y[1]);
@@ -37,7 +39,7 @@ module CSAM2C(Z, X, Y);
         partialProduct pp14(P1[2], X[2], Y[1]);
         partialProduct pp15(P1[1], X[1], Y[1]);
         partialProduct pp16(P1[0], X[0], Y[1]);
-        partialProduct pp17(sum2[7], X[7], Y[2]);
+        partialNProduct pp17(sum2[7], X[7], Y[2]);
         partialProduct pp18(P2[6], X[6], Y[2]);
         partialProduct pp19(P2[5], X[5], Y[2]);
         partialProduct pp20(P2[4], X[4], Y[2]);
@@ -45,7 +47,7 @@ module CSAM2C(Z, X, Y);
         partialProduct pp22(P2[2], X[2], Y[2]);
         partialProduct pp23(P2[1], X[1], Y[2]);
         partialProduct pp24(P2[0], X[0], Y[2]);
-        partialProduct pp25(sum3[7], X[7], Y[3]);
+        partialNProduct pp25(sum3[7], X[7], Y[3]);
         partialProduct pp26(P3[6], X[6], Y[3]);
         partialProduct pp27(P3[5], X[5], Y[3]);
         partialProduct pp28(P3[4], X[4], Y[3]);
@@ -90,7 +92,8 @@ module CSAM2C(Z, X, Y);
         fullAdder CPA4(carry4[3],Z[7],carry3[3],carry4[2],sum3[4]);
         fullAdder CPA5(carry4[4],Z[8],carry3[4],carry4[3],sum3[5]);
         fullAdder CPA6(carry4[5],Z[9],carry3[5],carry4[4],sum3[6]);
-        fullAdder CPA7(Z[11],Z[10],carry3[6],carry4[5],sum3[7]);
+        fullAdder CPA7(cout,Z[10],carry3[6],carry4[5],sum3[7]);
 
-        assign Z[11] = ~Z[11];
+        assign Z[11] = ~cout;
+
 endmodule

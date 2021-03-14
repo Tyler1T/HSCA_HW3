@@ -1,3 +1,3 @@
-module partialProduct(output logic P, input logic A, B);
+module partialNProduct(output logic P, input logic A, B);
   assign P = !(A & B);
 endmodule
