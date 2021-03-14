@@ -27,7 +27,7 @@ if [file exists work] {
 vlib work
 
 # compile source files
-vlog CSAM.sv CSAM_tb.sv
+vlog *.sv
 
 # start and run simulation
 vsim -voptargs=+acc work.stimulus
@@ -40,31 +40,12 @@ view wave
 add wave -hex -r /stimulus/*
 
 # Adapt to make Waveform Viewer prettier :)
-#add wave -noupdate -divider -height 32 "MIPS Datapath"
-#add wave -hex /stimulus/dut/mips/dp/*
-#add wave -noupdate -divider -height 32 "MIPS Control"
-#add wave -hex /stimulus/dut/mips/c/*
-#add wave -noupdate -divider -height 32 "Instruction Memory"
-#add wave -hex /stimulus/dut/imem/*
-#add wave -noupdate -divider -height 32 "Data Memory (Storage)"
-#add wave -hex /stimulus/dut/dmem/*
-#add wave -noupdate -divider -height 32 "Register File"
-#add wave -hex /stimulus/dut/mips/dp/rf/*
-#add wave -hex /stimulus/dut/mips/dp/rf/rf
 #add list -hex -r /stimulus/*
 #add log -hex -r /*
 
 -- Set Wave Output Items
 TreeUpdate [SetDefaultTree]
 WaveRestoreZoom {0 ps} {75 ns}
-configure wave -namecolwidth 150
-configure wave -valuecolwidth 100
-configure wave -justifyvalue left
-configure wave -signalnamewidth 0
-configure wave -snapdistance 10
-configure wave -datasetprefix 0
-configure wave -rowmargin 4
-configure wave -childrowmargin 2
 
 -- Run the Simulation
-run 200ns
+run 80ns

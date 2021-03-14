@@ -1,10 +1,10 @@
 module stimulus();
 
-  logic [4:0] Y;
+  logic [3:0] Y;
   logic [7:0] X;
   logic [11:0] Z;
 
-  logic [4:0] num2;
+  logic [3:0] num2;
   logic [7:0] num1;
   logic [11:0] answer;
   logic clk;
@@ -13,7 +13,7 @@ module stimulus();
   logic [2:0] vectornum, errors;
 
   //the testvector file should be 5 rows each 27 bits wide
-  logic [26:0] testVector[4:0];
+  logic [26:0] testVector[5:0];
 
 
   // Instantiate DUT
@@ -34,7 +34,7 @@ module stimulus();
   always @(posedge clk)
     begin
       #1;
-      {num1, num2, answer} = testVector[vectornum];
+      {answer, num1, num2} = testVector[vectornum];
     end
 
   always @(negedge clk)
