@@ -16,11 +16,10 @@ module stimulus();
 
   // Instantiate DUT
   CSAM2C dut(answer, X, Y);
-
   always
     begin
-      #5 clk = 0;
-      #5 clk = 1;
+      clk = 0; #5;
+      clk = 1; #5;
     end
 
   initial
@@ -31,7 +30,7 @@ module stimulus();
 
   always @(posedge clk)
     begin
-      #1;
+      
       {Z, X, Y} = testVector[vectornum];
     end
 
